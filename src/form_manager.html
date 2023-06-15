@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title id="form_manager_title"></title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-3.6.0.js"></script>
+
+  <!-- Popper.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+  </script>
+  <!-- Popper.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+  </script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.min.js"></script>
+  <script src="js/page_maker.js"></script>
+  <link href="css/sidebars.css" rel="stylesheet">
+  <script src="js/pulse_conf.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/form_manager.js"></script>
+  <script src="js/jquery.qrcode.min.js"></script>
+  <script src="js/authentication.js"></script>
+  <script src="js/cookie_tool.js"></script>
+  <script src="js/custom_option.js"></script>
+  <script src="js/csvparser.js"></script>
+  <script src="js/attendant_grade_module.js"></script>
+    <script src="js/user_info.js"></script>
+
+
+  <script src="js/iteration_module.js"></script>
+  <!--script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.4.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+  </script>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/updated-sidebar.css">
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+    integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
+  </script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+    integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+  </script>
+</head>
+
+<style>
+  #pulse_auth_fullscr input[type=radio] {
+    transform: scale(4);
+
+  }
+
+  html {
+    scroll-behavior: smooth !important;
+  }
+</style>
+<input type="hidden" id="page_id" value="" />
+
+<body>
+  <div class="wrapper ">
+
+     <nav id="sidebar">
+        <div class="sidebar-header text-white" id="sidebar-title-header">
+          <h3><span id="welcomeuser"></span></h3>
+      </div>
+          <ul class="list-unstyled components text-white">
+           
+              <li><a href="#" onclick="saveForm_user_info('home.html');">
+                <img class="img-fluid bi me-2" width="16" height="16" src="image/home.png" >
+              Home</a>
+              </li>
+              <li class="active">
+                  <a href="#"  onclick="saveForm_user_info('page_maker.html');"><img class="img-fluid bi me-2" width="16" height="16" src="image/form.png" >
+                    Form Maker</a>
+              </li>
+              <li>
+                  <a href="#" onclick="saveForm_user_info('attend_history.html');"><img class="img-fluid bi me-2" width="16" height="16" src="image/attendance.png"  >
+                    Attendance History</a>
+                 
+              </li>
+              <li>
+                  <a href="#" onclick="saveForm_user_info('logout');"> <img class="img-fluid bi me-2" width="16" height="16" src="image/power-off.png"  >
+                    Logout</a>
+              </li>
+             
+          </ul>
+
+        
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content">
+        
+          <nav class="navbar navbar-expand-lg  d-lg-none  navbar-light bg-navbar text-white">
+              <div class="container-fluid">
+
+                  <button type="button" id="sidebarCollapse" class="btn-sm btn bg-navbar d-lg-none ml-auto" style="border-radius: 15%;border-width: 3px;">
+                    <img src="image/menu.png" height="20" width="20">
+                    
+                  </button>
+                  <h3><span id="welcomeuser1"></span></h3>
+               
+              </div>
+          </nav>
+          <!-- content-->
+      <div class=" container-fluid">
+        <!-- tab-->
+
+        <!-- end tab-->
+
+
+        <h3 class="text-danger pt-sm-4">Sharing Control</h3>
+
+        <div class=" row container-fluid pt-sm-2 ml-sm-1 pr-sm-2" id="pulse_auth">
+          <div class="col-auto p-sm-1">
+            <input class="form-check-input" type="radio" name="pulse-0" id="pulse_0">
+
+          </div>
+          <div class="col-auto p-sm-1">
+            <input class="form-check-input" type="radio" name="pulse-1" id="pulse_1">
+
+          </div>
+          <div class="col-auto p-sm-1">
+            <input class="form-check-input" type="radio" name="pulse-2" id="pulse_2">
+
+          </div>
+          <div class="col-auto p-sm-1">
+            <input class="form-check-input" type="radio" name="pulse-3" id="pulse_3">
+
+          </div>
+          <div class="col-auto p-sm-1">
+            <input class="form-check-input" type="radio" name="pulse-4" id="pulse_4">
+
+          </div>
+          <div class="col-auto p-sm-1">
+            <input class="form-check-input" type="radio" name="pulse-5" id="pulse_5">
+
+          </div>
+          <div class="col-auto p-sm-1">
+            <img src="image/expand.png" width="35" height="35" class="img-responsive btn-outline-secondary"
+              onclick="present_mode()" data-toggle="tooltip" data-placement="bottom" title="Present Mode">
+          </div>
+          <div class="col-auto p-sm-1">
+            <div class="spinner-border d-none" role="status" id="wait_switch_swap">
+
+            </div>
+            <img id="control-btn" src="image/play.png" width="35" height="35"
+              class="img-responsive btn-outline-secondary" onclick="pulse_switch()" data-toggle="tooltip"
+              data-placement="bottom" title="Start Attendance Taking">
+
+          </div>
+          <!---->
+          <div class="col-auto p-sm-1">
+            <img id="control-btn" src="image/url.png" width="35" height="35"
+              class="img-responsive btn-outline-secondary" onclick="generated_base64id('user')" data-toggle="tooltip"
+              data-placement="bottom" title="Open Share Link">
+
+          </div>
+          <div class="col-auto p-sm-1">
+            <img id="control-btn" src="image/pencil.png" width="35" height="35"
+              class="img-responsive btn-outline-secondary" onclick="generated_base64id('self-sign')"
+              data-toggle="tooltip" data-placement="bottom" title="Open Manual Signer">
+
+          </div>
+          <div class="col-auto p-sm-1">
+
+
+          </div>
+
+        </div>
+        <div class="row w-100">
+          <div class="custom-control custom-switch">
+            <label for="pulse_switch">Strict Timer Mode</label>
+            <input type="checkbox" class="custom-control-input" name="pulse_switch_" id="pulse_switch" data-on-text="ON"
+              data-off-text="OFF">
+
+          </div>
+        </div>
+        <div class="row w-100">
+          <div class="custom-control custom-switch">
+            <label for="pulse_switch">Single Device Sign-in</label>
+            <input type="checkbox" class="custom-control-input" name="ip_signin_" id="ip_signin" data-on-text="ON"
+              data-off-text="OFF">
+
+          </div>
+        </div>
+
+        <div class="row pt-sm-4 text-center ml-sm-1 w-100" id="refresh_status">
+          <p class=" col-sm-auto">The pulse will refresh in <b><span id="current_timer">😑</span> </b></p>
+
+          <!--p class="col-sm-auto">Pulse : <b><span id="current_pulse" ></span></b></p-->
+
+        </div>
+
+        <hr>
+
+        <style>
+          .wrap {
+            position: relative;
+            width: 80px;
+            height: 80px;
+
+          }
+
+          .inner {
+            position: absolute;
+            top: 50px;
+            right: 0;
+          }
+        </style>
+
+        <div class="row pt-sm-2 container-fluid">
+          <div class="row p-sm-2">
+            <div class="col-sm-6">
+              <h3 class="text-danger pt-sm-2 ">Form Maker</h3>
+
+            </div>
+
+
+          </div>
+          <div class="row w-100 container">
+            <div class="col-auto border-start-0 border-top-0 border-bottom-0  border border-secondary">
+              <div class="col-md-auto form-group wrap">
+                <img onclick="load_image_logo();" id="current_picture" src="image/picture_placeholder.png" width="80"
+                  height="80" class="d-block  border-secondary border border-2 rounded-2 rounded ">
+
+                <label for="upload_picture"> <img src="image/camera.png" width="30" height="30" class="inner d-block">
+                </label>
+                <input type="file" id="upload_picture" class="d-none" accept="image/png, image/gif, image/jpeg" ">
+              
+              </div>
+            </div>
+            <div class=" col-auto w-75 form-group">
+                <div class="row">
+                  <input type="text" class="form-control input-lg border-0 " maxlength="30"
+                    style="background-color: rgb(250,250,250);font-size: 25px;" id="page_title" placeholder="Untitled">
+                </div>
+                <div class="row">
+                  <input type="text" class="form-control border-0  " id="page_date"
+                    style="background-color: rgb(250,250,250);font-size: 25px;" placeholder="30/9/2021">
+
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+
+          </div>
+          <hr>
+
+
+
+          <div id="form_field_manager" class="container-fluid row pt-sm-3">
+
+            <h5 class="text-primary">Data to be record ( <b><span id="total_opt">0</span> </b>) </h5>
+            <div class="row w-100 m-auto justify-content-sm-between ">
+              <div class="col-auto p-sm-2 justify-content-sm-between">
+                <button type="button" class="btn btn-outline-danger p-2 m-1 d-none" onclick="deletepg()"
+                  data-toggle="tooltip" data-placement="bottom" title="Delete Page"><img class="img-reponsive "
+                    src="image/deletepg.png" width="25" height="25"></button>
+                <button type="button" class="btn btn-outline-warning p-2 m-1 " onclick="cleandata()"
+                  data-toggle="tooltip" data-placement="bottom" title="Reset current iteration data to normal!"><img class="img-reponsive "
+                    src="image/fixing-problem.png" width="25" height="25"></button>
+
+                <button type="button" class="btn btn-outline-primary p-2 m-1" onclick="showresult()"
+                  data-toggle="tooltip" data-placement="bottom" title="Open Attendance Manager"><img
+                    class="img-reponsive " src="image/pie-chart-statistic.png" width="25" height="25"></button>
+                <button type="button" class="btn btn-outline-danger p-2 m-1" id="form_menu_option"
+                  onclick="open_option()" data-toggle="tooltip" data-placement="bottom"
+                  title="Open Select Form Option"><img class="img-reponsive " src="image/table.png" width="25"
+                    height="25"></button>
+                <button type="button" class="btn btn-outline-primary p-2 m-1 " onclick="confirmSaveData()"
+                  data-toggle="tooltip" data-placement="bottom" title="Save Form"><img class="img-reponsive "
+                    src="image/diskette.png" width="25" height="25"></button>
+
+              </div>
+              <div class="col-auto">
+                <a class="btn btn-dark p-2 m-3" href="#last_content"   data-toggle="tooltip" data-placement="top" title="Go to Bottom">
+                  <img src="image/up-arrow.png" height="25" width="25" style="transform:rotate(180deg);">
+                </a>
+              </div>
+
+
+
+            </div>
+
+            <div class="pt-sm-3"> </div>
+            <div id="form_field">
+
+            </div>
+            <!--content-->
+            <!--content-->
+
+          </div>
+          <hr>
+          <div class="row pb-lg-5 justify-content-sm-end" id="last_content"  data-toggle="tooltip" data-placement="top" title="Go to Top">
+            <div class="col-sm-1">
+              <a class="btn btn-dark p-2 m-3" href="#content">
+                <img src="image/up-arrow.png" height="25" width="25">
+              </a>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+      <!-- content-->
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+        $('#sidebar-title-header').hide();
+      });
+    });
+  </script>
+</body>
+
+</html>
+
+
+<!-- form_demo_option chooser-->
+<div class="modal fade" id="form_demo_option" tabindex="-1" role="dialog" aria-labelledby="form_demo_optionTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="form_demo_optionTitle">Click the option below to add question to form maker</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <div class="row pt-sm-2">
+          <div class="col-sm-auto">
+            <button class="btn-outline-danger btn-sm"
+              onclick="appendCustomFormOption_Text('Table Title','Text Title',false)">Text</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-danger btn-sm"
+              onclick="appendCustomFormOption_Likert('Table Title','Likert Title','Very Bad','Bad','Average','Good','Very Good',false)">Likert</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-danger btn-sm"
+              onclick="appendCustomFormOption_Binary('Table Title','Binary Title','No','Yes','Maybe',false)">Binary</button>
+          </div>
+        </div>
+        <div class="row pt-sm-2 ">
+
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('IC Number','ic_number')">IC
+              Number</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('Birthday','birthday')">Birthday</button>
+          </div>
+
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Email','email')">Email</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Phone Number','phone_num')">Phone
+              Number</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Home Address','address')">Home
+              Address</button>
+          </div>
+        </div>
+
+        <div class="row pt-sm-2">
+
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('Primary School','primary_school')">Primary School</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('Lower Secondary','lower_secondary')">Lower Secondary</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('Upper Secondary','upper_secondary')">Upper Secondary</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('University','university')">University</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('College','college')">College</button>
+          </div>
+
+        </div>
+        <div class="row pt-sm-2">
+
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('Polytechnic','polytechnic')">Polytechnic</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Current Job','current_job')">Current
+              Job</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Father Name','father_name')">Father
+              Name</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Mother Name','mother_name')">Mother
+              Name</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('City','city')">City</button>
+          </div>
+        </div>
+        <div class="row pt-sm-2">
+
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('State','state')">State</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Zip Code','zip_code')">Zip
+              Code</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('Religion','religion')">Religion</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Race','race')">Race</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm"
+              onclick="appendFormOption('Department','department')">Department</button>
+          </div>
+        </div>
+
+        <div class="row pt-sm-2">
+
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Course','course')">Course</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Club','club')">Club</button>
+          </div>
+          <div class="col-sm-auto">
+            <button class="btn-outline-primary btn-sm" onclick="appendFormOption('Class','class')">Class</button>
+          </div>
+         
+        </div>
+        <div class="row pt-sm-2">
+
+
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- form_demo_option chooser-->
+<div class="modal fade" id="pulse_modal" tabindex="-1" role="dialog" aria-labelledby="pulse_modalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen" role="document">
+    <div class="modal-content" id="form_info_modal_content">
+      <div class="modal-header ">
+
+        <div class="row justify-content-between w-100">
+          <div class="col-auto">
+            <h5 class="modal-title" id="pulse_modalTitle" class="text-primary">Presentation Mode</h5>
+
+          </div>
+          <div class="col-auto">
+            <div class="row">
+              <div class="col-auto">
+                <div class="spinner-border d-none" role="status" id="wait_switch_swap_modal">
+
+                </div>
+                <img id="control-btn-modal" src="image/play.png" width="35" height="35" 
+                  class="img-responsive btn-outline-secondary" onclick="pulse_switch()">
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <button type="button" class="btn-close ms-3 btn-lg" data-bs-dismiss="modal" aria-label="Close"
+          id="close_modal_form_info"></button>
+
+
+      </div>
+      <div class="modal-body container-fluid ">
+        <div class="col text-center pt-sm-4 ">
+          <h1 class="text-secondary col-sm-12"><span id="page_title_modal"></span></h1>
+        </div>
+        <div class="row text-center pt-sm-2 pb-2">
+
+          <div id="logo_image" class="col-sm-6">
+            <img src="image/picture_placeholder.png" id="logo_image_modal" width="300px"
+              height="300px" style="border-radius: 15px;">
+          </div>
+          <div id="qr_code" class="col-sm-6 ">
+            <div class="pt-5"></div>
+          </div>
+        </div>
+
+        <div class="row  container-fluid justify-content-center pt-sm-4 p-md-4" id="pulse_auth_fullscr">
+          <div class="col-auto px-sm-5">
+            <input class="form-check-input" name="pulse-0-modal" type="radio" id="pulse_0_modal">
+
+          </div>
+          <div class="col-auto  px-sm-5">
+            <input class="form-check-input" name="pulse-1-modal" type="radio" id="pulse_1_modal">
+
+          </div>
+          <div class="col-auto px-sm-5">
+            <input class="form-check-input" name="pulse-2-modal" type="radio" id="pulse_2_modal">
+
+          </div>
+          <div class="col-auto px-sm-5">
+            <input class="form-check-input" name="pulse-3-modal" type="radio" id="pulse_3_modal">
+
+          </div>
+          <div class="col-auto px-sm-5">
+            <input class="form-check-input" name="pulse-4-modal" type="radio" id="pulse_4_modal">
+
+          </div>
+          <div class="col-auto px-sm-5">
+            <input class="form-check-input" name="pulse-5-modal" type="radio" id="pulse_5_modal">
+
+          </div>
+
+
+        </div>
+
+        <!--div class="row pt-sm-5 text-center ml-sm-1">
+           
+              <p class="col-sm-6">Pulse : <b><span id="current_pulse_modal" ></span></b></p>
+      
+         </div-->
+        <div class="row pt-sm-5 text-center">
+          <h3 class="col-sm-12"><b>The pulse will refresh in</b> </h3>
+
+        </div>
+        <div class="row pt-sm-1 text-center ml-sm-1">
+          <h1 class=" col-sm-12 text-danger" style="font-size:120px"><b><span id="current_timer_modal">😑</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- confirm_save_dialog chooser-->
+<div class="modal fade" id="confirm_save_dialog" tabindex="-1" role="dialog" aria-labelledby="pulse_modalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pulse_modalTitle" class="text-primary">Overwrite file data </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <h3>Are you sure to overwrite existing data ?. The old data will be replace with table header and attribute.
+        </h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="close_prompt()">
+          <h5>Cancel</h5>
+        </button>
+        <button class="btn btn-danger btn-ok" onclick="saveData()">
+          <h5>Overwrite</h5>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</html>
+
+<script>
+  $("#pulse_auth").children().bind('click', function () {
+    return false;
+  });
+  $("[name='pulse_switch_']").bootstrapSwitch();
+  $("#pulse_switch").bootstrapSwitch('onColor', 'danger');
+  $("#pulse_switch").bootstrapSwitch('offColor', 'primary');
+
+  $("[name='ip_signin_']").bootstrapSwitch();
+  $("#ip_signin").bootstrapSwitch('onColor', 'danger');
+  $("#ip_signin").bootstrapSwitch('offColor', 'primary');
+  /* $('#pulse_switch').on('switchChange.bootstrapSwitch', function (e, data) {
+
+alert($('#pulse_switch').bootstrapSwitch('state'));
+
+});*/
+
+  pull_current_id();
+  $('#qr_code').qrcode({
+    width: 300,
+    height: 300,
+    text: "https://seaspmu.com/user_form.html?id="+$("#page_id").val()
+  });
+
+
+  read_form_provider_info();
+  $("#upload_picture").change(function () {
+    readURL(this);
+  });
+  user_info_com("getusername");
+</script>
+
+<div class="modal fade" id="table_output" tabindex="-1" role="dialog" aria-labelledby="pulse_modalTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable mw-100 w-75 m-auto" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pulse_modalTitle" class="text-primary">Attendance Manager</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <nav>
+          <div class="nav nav-tabs active" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link justify-content-sm-between" id="nav-attendant_cur_attend-tab" data-toggle="tab"
+              href="#attendantnav_cur_attend" role="tab" aria-controls="nav-home" aria-selected="true">Attendant List
+              &nbsp &nbsp<img src="image/checking-attendance.png" class="img-fluid" width="20" height="20"> </a>
+
+
+            <a class="nav-item nav-link justify-content-sm-between" id="nav-attendant_graph-tab" data-toggle="tab"
+              href="#attendantnav_cur_graph" onclick="openchart('pie')" role="tab" aria-controls="nav-profile"
+              aria-selected="false">Graph &nbsp &nbsp <img src="image/pie-chart.png" class="img-fluid" width="20"
+                height="20"></a>
+
+
+            <a class="nav-item nav-link justify-content-sm-between" id="nav-attendant_iter_man-tab"
+              onclick="iteration_manager()" data-toggle="tab" href="#attendantnav_iter_man" role="tab"
+              aria-controls="nav-contact" aria-selected="false">Attendance&nbsp <img src="image/graph.png"
+                class="img-fluid" width="20" height="20">&nbsp <div class="badge bg-danger badge-lg py-2"><span
+                  id="iteration_value" class="text-white "></span></div> </a>
+
+
+            <a class="nav-item nav-link   justify-content-sm-between" onclick="grade_generate()"
+              id="nav-attendant_grade-tab" data-toggle="tab" href="#attendantnav_attend_grade" role="tab"
+              aria-controls="nav-contact" aria-selected="false">Attendant
+              Grade &nbsp &nbsp <img src="image/star.png" class="img-fluid" width="20" height="20"></a>
+
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+
+
+          <style>
+            .bg-panel-table {
+              background-color: #00ABA9;
+            }
+          </style>
+          <div class="tab-pane fade  show active" id="attendantnav_cur_attend" role="tabpanel"
+            aria-labelledby="attendant_cur_table container m-auto">
+            <div class="row bg-panel-table m-auto justify-content-between">
+              <div class="col-auto">
+                <h5 class="text-bold pt-3 text-white">ATTENDANCE NO. <span id="attendant_iter_val"></span></h5>
+              </div>
+              <div class="col-auto">
+                <h5 class="text-bold pt-3 text-white"><span id="attendant_iter_val_date"></span></h5>
+              </div>
+            </div>
+
+            <div class="row m-auto">
+              <table class="table table-bordered table-striped pt-3 " id="data_table">
+                <thead>
+                  <tr id="thead_result" class="table-dark  text-white align-text-top"></tr>
+                </thead>
+                <tbody id="tbody_result" class="table-light text-dark"></tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <div class="tab-pane fade" id="attendantnav_cur_graph" role="tabpanel"
+            aria-labelledby="attendantnav_cur_graph">
+
+            <div class="row container-fluid justify-content-sm-between py-3 pb-3">
+
+              <div class="col-auto">
+                <div class="row">
+                  <h3>Graph Info</h3>
+                </div>
+              </div>
+              <div class="col-auto ">
+                <div class="row">
+
+                  <button type="button" class="col-auto btn btn-primary m-2" onclick="openchart('pie')">
+                    <img src="image/pie-chart-black.png" class="img-fluid" width="20" height="20">
+                  </button>
+                  <button type="button" class="col-auto btn btn-success m-2" onclick="openchart('doughnut')">
+                    <img src="image/doughnut.png" class="img-fluid" width="20" height="20">
+                  </button>
+
+                </div>
+              </div>
+              <hr>
+            </div>
+            <div id="view_point_canvas"></div>
+            <div id="statistic_canvas" class="row container-fluid pb-4"> </div>
+          </div>
+          <style>
+            a.list-group-item:hover {
+              background: #757ce8;
+            }
+          </style>
+          <div class="tab-pane fade container-fluid" id="attendantnav_iter_man" role="tabpanel"
+            aria-labelledby="nav-contact-tab">
+            <!--iteration body-->
+            <div class="row py-3 justify-content-sm-between">
+              <div class="col-auto">
+                <h5>Latest Iteration (&nbsp;<b><span id="latest_iteration" class="text-danger"></span></b>&nbsp;)</h5>
+              </div>
+              <div class="col-auto">
+                <button class="btn btn-info" onclick="confirmNewIteration();"><img src="image/more.png"
+                    class="img-fluid" width="20" height="20"></button>
+              </div>
+            </div>
+
+            <div class="list-group" id="iteration_list">
+
+
+
+            </div>
+            <!--iteration body end-->
+          </div>
+          <style>
+            .panel_color {
+              background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+            }
+          </style>
+          <div class="tab-pane fade" id="attendantnav_attend_grade" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <!--attend grade body-->
+            <div class="row pt-3  justify-content-sm-between container-fluid rounded-2 rounded m-auto">
+              <div
+                class="row pt-3 panel_color justify-content-sm-between border-dark border container-fluid rounded-2 rounded m-auto">
+                <div class="col-3 text-center text_stroke">
+                  <h6>Total Attendance</h6>
+                  <h1><span id="total_iteration_value"></span></h1>
+
+                </div>
+                <div class="col-auto">
+                  <p class="text-white text_stroke"><b>Total Attendant : <span id="total_attendant_value"></span>
+                      <br>Total Responses : <span id="total_attendant_response_value"></span>
+                      <br>Attendance Rate : <b><span id="total_attendance_rate_value"></span></b></p>
+                </div>
+
+              </div>
+              <div class="py-2"></div>
+              <style>
+                .fixed-ratio-resize {
+                  max-width: 100%;
+                  height: auto;
+                  width: auto\9;
+                }
+              </style>
+              <div id="attend_status_canvas">
+
+              </div>
+              <!--attend grade  body end-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- confirm add iteration-->
+  <div class="modal fade" id="confirm_new_iteration" tabindex="-1" role="dialog" aria-labelledby="pulse_modalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pulse_modalTitle" class="text-primary">Adding New Iteration </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        </div>
+        <div class="modal-body">
+          <h3>Adding new iteration make current iteration unable to receive new response anymore !</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" onclick="close_prompt_iteration()">
+            <h5>Cancel</h5>
+          </button>
+          <button class="btn btn-success btn-ok" onclick="new_iteration()">
+            <h5>Add New Iteration</h5>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="confirm_new_iteration_success" tabindex="-1" role="dialog"
+    aria-labelledby="pulse_modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pulse_modalTitle" class="text-primary">Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        </div>
+        <div class="modal-body">
+          <h3>New iteration has added !</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="close_prompt_iteration_success()">
+            <h5>Close</h5>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    $('#control-btn-modal').on('click', function () {
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement ||
+        document.msFullscreenElement) { //in fullscreen, so exit it
+
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+        $("#fullscr_img").attr("src", "image/fullscreen.png");
+        $("#close_modal_form_info").show();
+      } else { //not fullscreen, so enter it
+
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+          document.documentElement.msRequestFullscreen();
+        }
+        $("#close_modal_form_info").hide();
+        $("#fullscr_img").attr("src", "image/exit_fullscreen.png");
+
+      }
+    });
+  </script>

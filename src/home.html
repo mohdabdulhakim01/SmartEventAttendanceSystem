@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href= "css/bootstrap.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+    <link href="css/sidebars.css" rel="stylesheet">
+    <script src="js/cookie_tool.js"></script>
+    <script src="js/authentication.js"></script>
+    <script src="js/user_info.js"></script>
+    <script src="js/auto_fill_suggestion.js"></script>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/updated-sidebar.css">
+  <!-- Popper.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    
+      <nav id="sidebar">
+        <div class="sidebar-header text-white" id="sidebar-title-header">
+          <h3><span id="welcomeuser"></span></h3>
+      </div>
+          <ul class="list-unstyled components text-white">
+           
+              <li class="active"><a href="#" onclick="saveForm_user_info('home.html');">
+                <img class="img-fluid bi me-2" width="16" height="16" src="image/home.png" >
+              Home</a>
+              </li>
+              <li>
+                  <a href="#"  onclick="saveForm_user_info('page_maker.html');"><img class="img-fluid bi me-2" width="16" height="16" src="image/form.png" >
+                    Form Maker</a>
+              </li>
+              <li>
+                  <a href="#" onclick="saveForm_user_info('attend_history.html');"><img class="img-fluid bi me-2" width="16" height="16" src="image/attendance.png"  >
+                    Attendance History</a>
+                 
+              </li>
+              <li>
+                  <a href="#" onclick="saveForm_user_info('logout');"> <img class="img-fluid bi me-2" width="16" height="16" src="image/power-off.png"  >
+                    Logout</a>
+              </li>
+             
+          </ul>
+
+        
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content">
+        
+          <nav class="navbar navbar-expand-lg  d-lg-none  navbar-light bg-navbar text-white">
+              <div class="container-fluid">
+
+                  <button type="button" id="sidebarCollapse" class="btn-sm btn bg-navbar d-lg-none ml-auto" style="border-radius: 15%;border-width: 3px;">
+                    <img src="image/menu.png" height="20" width="20">
+                    
+                  </button>
+                  <h3><span id="welcomeuser1"></span></h3>
+               
+              </div>
+          </nav>
+          <!-- content-->
+          
+      <div class="container col-sm-auto pt-sm-4 pb-sm-4">
+        <div class="row">
+          <div class="row container-fluid">
+            <p><b>Please make sure to fill all important data <span class="text-danger">*</span> to make sure event <br>attendance work flawlessly. </b></p>
+          
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="student_name">Name <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="student_name" placeholder="Mohd Abdul Hakim" oninput="anyinput()" maxlength="50">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="ic_num">IC Number <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="ic_num" placeholder="01092113XXXX" oninput="check_identity_availability('ic_num');"  maxlength="12">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="birthday">Birthday <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="birthday" placeholder="21/9/2XXX" oninput="anyinput()"  maxlength="15">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="matrix_num">Matrix Number <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="matrix_num" placeholder="20DDT19FXXXX" oninput="check_identity_availability('matrix_num');"  maxlength="13">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          
+         
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="email">Email <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="email" placeholder="abdulhakim@gmail.com" disabled>
+            </div>
+            </div>
+            <div class="col-sm-auto">
+              <div class="form-group">
+                <label for="phone_num">Phone Number <span class="text-danger">*</span> </label>
+                <input type="text" class="form-control" id="phone_num" placeholder="0135398XXX" oninput="check_identity_availability('phone_num')"  maxlength="10">
+              </div>
+            </div>
+            <div class="col-sm-auto">
+              <div class="form-group">
+                <label for="home_address">Home Address <span class="text-danger">*</span> </label>
+                <input type="text" class="form-control" id="home_address" placeholder="No X,Jalan Haji Karim" oninput="anyinput()"  maxlength="50">
+              </div>
+            </div>
+            <div class="col-sm-auto">
+              <div class="form-group">
+                <label for="primary_school">Primary School <span class="text-danger">*</span> </label>
+                <input type="text" class="form-control" id="primary_school" placeholder="SK Agama Sarikei" oninput="anyinput()"  maxlength="50">
+              </div>
+            </div>
+        </div>
+
+        <div class="row">
+          
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="lower_secondary">Lower Secondary School <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="lower_secondary" placeholder="SMK Sarikei Baru" oninput="anyinput()" maxlength="50">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="upper_secondary">Upper Secondary School <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="upper_secondary" placeholder="SMK Sarikei Baru" oninput="anyinput()" maxlength="50">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="university">University</label>
+              <input type="text" class="form-control" id="university" placeholder="University" oninput="anyinput()" maxlength="50">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="college">College</label>
+              <input type="text" class="form-control" id="college" placeholder="College" oninput="anyinput()" maxlength="50">
+            </div>
+          </div>
+
+        </div>
+      
+        <div class="row">
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="polytechnic">Polytechnic <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="polytechnic" placeholder="Polytechnic Mukah" oninput="anyinput()" maxlength="50">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="current_job">Current Job <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="current_job" placeholder="Student/Seller/Clerk" oninput="anyinput()" maxlength="20">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="father_name">Father Name <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="father_name" placeholder="Busrah Bin Suhai" oninput="anyinput()" maxlength="20">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="mother_name">Mother Name <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="mother_name" placeholder="Khadijah Abdullah" oninput="anyinput()" maxlength="20">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+         
+          
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="emergency_num">Emergency Phone Number <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="emergency_num" placeholder="019878XXXX" oninput="anyinput()" maxlength="10">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="city">City <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="city" placeholder="Sarikei" onclick="open_suggestion('city')" oninput="anyinput()" >
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="state">State <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="state" placeholder="Sarawak" onclick="open_suggestion('state')" oninput="anyinput()">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="zip_code">Zip Code <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="zip_code" placeholder="96100" oninput="anyinput()">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="religion">Religion <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="religion" placeholder="Islam"  onclick="open_suggestion('religion')" oninput="anyinput()">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="race">Race <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="race" placeholder="Malay"  onclick="open_suggestion('race')" oninput="anyinput()">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="department">Department <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="department" placeholder="JTMK"  onclick="open_suggestion('department')" oninput="anyinput()">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="course">Course <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="course" placeholder="SAD"  onclick="open_suggestion('course')" oninput="anyinput()">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="class">Class <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="class" placeholder="DDT5B" oninput="anyinput()">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="class">Club <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="club" placeholder="Chess" onclick="open_suggestion('club')" oninput="anyinput()">
+            </div>
+          </div>
+          <div class="col-sm-auto">
+            <div class="form-group">
+              <label for="accept_btn"></label>
+              <button id="accept_btn" class="form-control btn bg-cyan btn-sm text-white px-sm-2 py-sm-2 " onclick="user_info_com('update_info');">Save Profile</button>
+        
+            </div>
+            
+          </div>
+        </div>
+        
+         
+       
+      </div>
+          <!-- content-->
+         </div>
+  </div>
+
+ 
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#sidebarCollapse').on('click', function () {
+              $('#sidebar').toggleClass('active');
+              $('#sidebar-title-header').hide();
+          });
+      });
+  user_info_com("getusername");
+  user_info_com("read_info");
+
+  isLogged();
+
+  </script>
+</body>
+
+</html>
+
+
+<div class="modal fade" id="data_saved" tabindex="-1" role="dialog"
+  aria-labelledby="data_savedTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="data_savedTitle" class="text-primary">Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <h3>Your profile data has been saved !</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" onclick="reloadpg();">
+          <h5>Close</h5>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="suggestion_modal" tabindex="-1" role="dialog" aria-labelledby="pulse_modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg mw-100 w-75 modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pulse_modalTitle" class="text-primary"><span id="attribute_title"></span> </h5>
+
+      </div>
+      <div class="modal-body">
+        <input class="form-control" id="search_text" type="text" placeholder="Search.." autofocus>
+        <hr>
+        <ul class="list-group text-dark" id="item_list">
+         
+       
+        </ul>  
+      </div>
+  </div>
+  </div>
+</div>
+
+<div class="modal fade" id="existed_attr_dialog" tabindex="-1" role="dialog" aria-labelledby="pulse_modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pulse_modalTitle" class="text-primary">Warning</h5>
+
+      </div>
+      <div class="modal-body">
+        <h5 id="existed_attr_text"></h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"  data-bs-dismiss="modal">
+          <h5>Close</h5>
+        </button>
+
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    
+  $("#search_text").on("keyup", function() {
+ $("#search_text").focus();
+    var value = $(this).val().toLowerCase();
+    $("#item_list li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+ 
+  });
+});
+$(document).keydown(function (e) 
+{
+    var keycode1 = (e.keyCode ? e.keyCode : e.which);
+    if (keycode1 == 0 || keycode1 == 9) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
+</script>

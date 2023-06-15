@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Attendance History</title>
+        <meta charset="UTF-8">
+       <link rel="stylesheet" href= "css/bootstrap.min.css">
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.6.0.js"></script>
+        <script src="js/formhistory.js"></script>
+        <link href="css/sidebars.css" rel="stylesheet">
+        <script src="js/bootstrap.js"></script>
+        <script src="js/cookie_tool.js"></script>
+        <script src="js/authentication.js"></script>
+    <script src="js/user_info.js"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/updated-sidebar.css">
+  
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    
+    <nav id="sidebar">
+        <div class="sidebar-header text-white" id="sidebar-title-header">
+          <h3><span id="welcomeuser"></span></h3>
+      </div>
+          <ul class="list-unstyled components text-white">
+           
+              <li><a href="#" onclick="saveForm_user_info('home.html');">
+                <img class="img-fluid bi me-2" width="16" height="16" src="image/home.png" >
+              Home</a>
+              </li>
+              <li>
+                  <a href="#"  onclick="saveForm_user_info('page_maker.html');"><img class="img-fluid bi me-2" width="16" height="16" src="image/form.png" >
+                    Form Maker</a>
+              </li>
+              <li class="active">
+                  <a href="#" onclick="saveForm_user_info('attend_history.html');"><img class="img-fluid bi me-2" width="16" height="16" src="image/attendance.png"  >
+                    Attendance History</a>
+                 
+              </li>
+              <li>
+                  <a href="#" onclick="saveForm_user_info('logout');"> <img class="img-fluid bi me-2" width="16" height="16" src="image/power-off.png"  >
+                    Logout</a>
+              </li>
+             
+          </ul>
+
+        
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content">
+        
+          <nav class="navbar navbar-expand-lg  d-lg-none  navbar-light bg-navbar text-white">
+              <div class="container-fluid">
+
+                  <button type="button" id="sidebarCollapse" class="btn-sm btn bg-navbar d-lg-none ml-auto" style="border-radius: 15%;border-width: 3px;">
+                    <img src="image/menu.png" height="20" width="20">
+                    
+                  </button>
+                  <h3><span id="welcomeuser1"></h3>
+               
+              </div>
+          </nav>
+          <!-- content-->
+
+          <div class="row container-fluid pt-sm-4">
+            <h3 class="text-secondary" >Attendance History</h3>
+            
+        </div>
+        <hr>
+        <div id="signed_history">
+         
+        </div>
+          <!-- content-->
+         </div>
+  </div>
+
+ 
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#sidebarCollapse').on('click', function () {
+              $('#sidebar').toggleClass('active');
+              $('#sidebar-title-header').hide();
+          });
+      });
+ 
+    isLogged();
+    user_id = readCookie("user_id");
+    read_signed_history();
+      user_info_com("getusername");
+  </script>
+</body>
+
+</html>
+
